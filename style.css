@@ -23,6 +23,11 @@ p {
   margin-bottom: 20px;
 }
 
+.card:hover {
+  transform: scale(1.03);
+  transition: transform 0.2s ease;
+}
+
 .container {
   margin-top: 20px;
 }
