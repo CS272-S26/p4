@@ -1,7 +1,28 @@
 body {
   background-color: #f8f9fa;
+  font-family: Arial, sans-serif;
 }
 
 h1 {
   color: #333;
+  margin-bottom: 15px;
+}
+
+p {
+  color: #555;
+}
+
+.navbar {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.card {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+.container {
+  margin-top: 20px;
 }
