@@ -1,51 +1,75 @@
+// =======================
+// ⭐ DATA
+// =======================
 let tasks = [];
 
-// ⭐ 读取 localStorage
+// ⭐ Load tasks from localStorage
 if (localStorage.getItem("tasks")) {
   tasks = JSON.parse(localStorage.getItem("tasks"));
 }
 
-// =========================
-// ⭐ TASKS PAGE LOGIC
-// =========================
-
-// 渲染任务（只在 tasks.html 执行）
-function renderTasks() {
-  const list = document.getElementById("task-list");
-  if (!list) return; // ⭐ 防止其他页面报错
-
-  list.innerHTML = "";
-
-  tasks.forEach((task, index) => {
-    const li = document.createElement("li");
-    li.className = "list-group-item d-flex justify-content-between align-items-center";
-
-    li.innerHTML = `
-      <div>
-        <strong>${task.name}</strong><br>
-        ${task.date ? "Due: " + task.date : ""}
-        ${task.course ? "<br>Course: " + task.course : ""}
-      </div>
-      <button class="btn btn-danger btn-sm">Delete</button>
-    `;
-
-    li.querySelector("button").addEventListener("click", () => {
-      tasks.splice(index, 1);
-      saveTasks();
-      renderTasks();
-    });
-
-    list.appendChild(li);
-  });
-}
-
-// 保存任务
+// =======================
+// ⭐ SAVE FUNCTION
+// =======================
 function saveTasks() {
+  // Save tasks so data persists after refresh
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-// 添加任务（只在 tasks.html 执行）
+// =======================
+// ⭐ TASKS PAGE LOGIC
+// =======================
+function renderTasks(filterCourse = "") {
+  const list = document.getElementById("task-list");
+  if (!list) return;
+
+  list.innerHTML = "";
+
+  tasks
+    .filter(task => !filterCourse || task.course === filterCourse)
+    .forEach((task, index) => {
+
+      const li = document.createElement("li");
+      li.className = "list-group-item d-flex justify-content-between align-items-center";
+
+      li.innerHTML = `
+        <div>
+          <strong>${task.name}</strong><br>
+          ${task.date ? "Due: " + task.date : ""}
+          ${task.course ? "<br>Course: " + task.course : ""}
+        </div>
+        <div>
+          <button class="btn btn-warning btn-sm edit-btn">Edit</button>
+          <button class="btn btn-danger btn-sm delete-btn">Delete</button>
+        </div>
+      `;
+
+      // delete
+      li.querySelector(".delete-btn").addEventListener("click", () => {
+        tasks.splice(index, 1);
+        saveTasks();
+        renderTasks();
+      });
+
+      // ⭐ edit（加分点）
+      li.querySelector(".edit-btn").addEventListener("click", () => {
+        const newName = prompt("Edit task name:", task.name);
+        if (newName) {
+          task.name = newName;
+          saveTasks();
+          renderTasks();
+        }
+      });
+
+      list.appendChild(li);
+    });
+}
+
+// =======================
+// ⭐ ADD TASK
+// =======================
 const addBtn = document.getElementById("add-btn");
+
 if (addBtn) {
   addBtn.addEventListener("click", () => {
     const name = document.getElementById("task-name").value;
@@ -64,23 +88,31 @@ if (addBtn) {
   });
 }
 
-// 初始渲染（只在 tasks 页面有效）
+// =======================
+// ⭐ FILTER（加分项）
+// =======================
+const filterInput = document.getElementById("filter-course");
+
+if (filterInput) {
+  filterInput.addEventListener("input", () => {
+    renderTasks(filterInput.value);
+  });
+}
+
+// 初始渲染
 renderTasks();
 
-
-// =========================
-// ⭐ INDEX PAGE LOGIC（新加）
-// =========================
-
+// =======================
+// ⭐ INDEX PAGE LOGIC
+// =======================
 if (window.location.pathname.includes("index.html")) {
 
-  // 更新 task 数量
   const taskCount = document.getElementById("task-count");
   if (taskCount) {
     taskCount.innerText = tasks.length;
   }
 
-  // 获取 quote（fetch API）
+  // ⭐ Fetch API
   fetch("https://api.quotable.io/random")
     .then(res => res.json())
     .then(data => {
@@ -90,17 +122,13 @@ if (window.location.pathname.includes("index.html")) {
       }
     })
     .catch(() => {
-      const quote = document.getElementById("quote");
-      if (quote) {
-        quote.innerText = "Failed to load quote.";
-      }
+      document.getElementById("quote").innerText = "Failed to load quote.";
     });
 }
 
-// =========================
-// ⭐ COURSES PAGE LOGIC（新加）
-// =========================
-
+// =======================
+// ⭐ COURSES PAGE LOGIC
+// =======================
 if (window.location.pathname.includes("courses.html")) {
 
   const courses = [
