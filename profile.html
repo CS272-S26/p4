@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile - Student Course Planner</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,28 +27,81 @@
   </div>
 </nav>
 
-<div class="container mt-4">
-  <h1>Profile</h1>
-  <p>This page shows basic user information and planner settings.</p>
+<main class="container mt-4">
 
-  <div class="row mt-3">
-    <div class="col-md-6">
-      <div class="card p-3">
-        <h5>User Information</h5>
-        <p>Name: Student User</p>
-        <p>Goal: Stay organized and manage coursework efficiently.</p>
+  <section>
+    <h1>Profile</h1>
+    <p class="text-muted">
+      Save your basic student information and academic goal.
+    </p>
+
+    <div class="row g-4 mt-2">
+
+      <div class="col-md-6">
+        <article class="card p-4">
+          <h2 class="h5">Create Your Profile</h2>
+
+          <form id="profile-form">
+            <div class="mb-3">
+              <label for="profile-name" class="form-label">Name</label>
+              <input id="profile-name" type="text" class="form-control" placeholder="Enter your name" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="profile-major" class="form-label">Major</label>
+              <input id="profile-major" type="text" class="form-control" placeholder="e.g. Data Science" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="profile-goal" class="form-label">Academic Goal</label>
+              <textarea id="profile-goal" class="form-control" rows="3" placeholder="Write your academic goal" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save Profile</button>
+          </form>
+        </article>
       </div>
+
+      <div class="col-md-6">
+        <article class="card p-4">
+          <h2 class="h5">Saved Profile</h2>
+          <p class="text-muted">
+            Your saved profile is displayed here using localStorage.
+          </p>
+
+          <div id="profile-result"></div>
+        </article>
+      </div>
+
     </div>
 
-    <div class="col-md-6">
-      <div class="card p-3">
-        <h5>Planner Settings</h5>
-        <p>Default view: Weekly tasks</p>
-        <p>Reminder style: Deadline-based planning</p>
-      </div>
-    </div>
-  </div>
-</div>
+    <article class="card p-4 mt-4 mb-4">
+      <h2 class="h5">Planner Settings</h2>
+      <p>Default view: Weekly tasks</p>
+      <p>Reminder style: Deadline-based planning</p>
+
+      <details>
+        <summary>Why save a profile?</summary>
+        <p class="mt-2">
+          Saving your profile makes the planner feel more personalized and demonstrates
+          persistent user data with localStorage.
+        </p>
+      </details>
+
+      <p class="mt-3">
+        Last updated: <time datetime="2026-04-30">April 30, 2026</time>
+      </p>
+    </article>
+
+  </section>
+
+</main>
+
+<footer>
+  <p>Student Course Planner | Built for CS272</p>
+</footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>

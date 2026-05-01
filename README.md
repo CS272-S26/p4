@@ -1,66 +1,92 @@
 # Student Course Planner
 
 ## Overview
-This project is a web-based student planner that helps users manage their courses and tasks. The website allows users to add, edit, delete, and organize tasks, while also viewing course information in a clean and responsive interface.
+Student Course Planner is a web-based application designed to help students organize their academic life. The website allows users to manage tasks, track deadlines, and view course information in a structured and user-friendly interface.
+
+Live Website:
+https://YOUR-GITHUB-USERNAME.github.io/p4/
 
 ---
 
 ## Features
 
 ### Task Management
-- Add new tasks with name, deadline, and course
-- Edit existing tasks
-- Delete tasks
+- Add, edit, and delete tasks
+- Assign deadlines and course labels
 - Filter tasks by course
-- Tasks are dynamically updated without refreshing the page
+- Mark tasks as completed
+- Tasks update dynamically without page refresh
 
 ### Data Persistence
-- All tasks are stored using localStorage
+- Uses localStorage to save tasks
 - Data remains available after page refresh
 
-### Dynamic Pages
-- Tasks page: dynamically displays and updates task list
-- Courses page: dynamically renders course cards using JavaScript
-- Home page: displays total number of tasks and a fetched quote
+### Dynamic Content (JavaScript)
+- Tasks page dynamically updates task list
+- Courses page dynamically generates course cards
+- Calendar page dynamically displays deadlines
+- Home page shows total task count and a random quote
 
-### API Integration
-- Fetch API is used to load a random quote from an external source
+### API / Data Fetching
+- Fetch API is used to load quotes from a JSON file (`data.json`)
 
 ---
 
 ## Technologies Used
-- HTML
-- CSS (Bootstrap)
-- JavaScript
-- Git & GitHub
-- GitHub Pages
+- HTML (semantic structure)
+- CSS + Bootstrap (responsive design)
+- JavaScript (DOM manipulation, events, dynamic updates)
+- localStorage (data persistence)
+- Fetch API
+- Git & GitHub (version control)
+- GitHub Pages (deployment)
 
 ---
 
 ## Project Structure
-- `index.html` – Home page
-- `tasks.html` – Task management page
-- `courses.html` – Course overview page
-- Additional pages: About, Contact, Calendar, Profile
+- `index.html` – Homepage
+- `tasks.html` – Task management page (form + localStorage)
+- `courses.html` – Dynamic course display
+- `calendar.html` – Deadline overview (dynamic)
+- `about.html`, `contact.html`, `profile.html` – Additional pages
 - `script.js` – Main JavaScript logic
 - `style.css` – Global stylesheet
+- `data.json` – Quote data source
+
+---
+
+## Assignment Requirements Covered
+
+This project meets all required components:
+
+- At least 7 HTML pages ✔  
+- Consistent navigation bar ✔  
+- Bootstrap used for styling ✔  
+- Global stylesheet ✔  
+- JavaScript used on 3+ pages ✔  
+- Form + user input ✔  
+- localStorage for persistence ✔  
+- Fetch API for dynamic data ✔  
+- Semantic HTML tags ✔  
+- Responsive design ✔  
 
 ---
 
 ## Accessibility & Design
-- Uses semantic HTML tags such as `<section>` and `<article>`
-- Includes labels for form inputs
-- Images include alt text for accessibility
-- Responsive layout using Bootstrap for mobile and desktop devices
+- Uses semantic tags: `<section>`, `<article>`, `<details>`, `<time>`
+- Form inputs include labels
+- Images include alt text
+- High contrast and readable layout
+- Fully responsive using Bootstrap
 
 ---
 
-## Usage
-Users can:
-1. Add and manage tasks
-2. View courses
-3. Filter tasks by course
-4. See a dynamic task count and daily quote on the homepage
+## How to Use
+1. Open the website using the GitHub Pages link
+2. Go to the Tasks page to add and manage tasks
+3. View courses on the Courses page
+4. Check deadlines on the Calendar page
+5. Use filters to organize tasks
 
 ---
 

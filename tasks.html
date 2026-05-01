@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tasks - Student Course Planner</title>
 
   <!-- Bootstrap -->
@@ -15,69 +16,107 @@
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand" href="index.html">Planner</a>
+
       <div>
-        <a class="nav-link text-white d-inline" href="index.html">Home</a>
-        <a class="nav-link text-white d-inline" href="courses.html">Courses</a>
-        <a class="nav-link text-white d-inline" href="tasks.html">Tasks</a>
-        <a class="nav-link text-white d-inline" href="about.html">About</a>
+        <a class="nav-link text-white d-inline me-3" href="index.html">Home</a>
+        <a class="nav-link text-white d-inline me-3" href="courses.html">Courses</a>
+        <a class="nav-link text-white d-inline me-3" href="tasks.html">Tasks</a>
+        <a class="nav-link text-white d-inline me-3" href="calendar.html">Calendar</a>
+        <a class="nav-link text-white d-inline me-3" href="about.html">About</a>
+        <a class="nav-link text-white d-inline me-3" href="contact.html">Contact</a>
+        <a class="nav-link text-white d-inline me-3" href="profile.html">Profile</a>
       </div>
     </div>
   </nav>
 
   <!-- Main Content -->
-  <div class="container mt-4">
+  <main class="container mt-4">
 
-    <!-- ⭐ semantic tags（加分） -->
     <section>
-      <article>
+      <h1 class="mb-3">Task Manager</h1>
+      <p class="text-muted">
+        Add assignments, organize them by course, set deadlines, and save your progress.
+      </p>
 
-        <h1 class="mb-4">Task Manager</h1>
+      <!-- Dashboard Summary -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-4">
+          <div class="card dashboard-card text-center p-3">
+            <h3 id="task-count">0</h3>
+            <p>Total Tasks</p>
+          </div>
+        </div>
 
-        <!-- Add Task Form -->
-        <div class="card p-3 mb-4">
-          <h5>Add New Task</h5>
+        <div class="col-md-4">
+          <div class="card dashboard-card text-center p-3">
+            <h3>Saved</h3>
+            <p>Uses localStorage</p>
+          </div>
+        </div>
 
-          <div class="mb-2">
+        <div class="col-md-4">
+          <div class="card dashboard-card text-center p-3">
+            <h3>Filter</h3>
+            <p>Search by Course</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Task Form -->
+      <article class="card p-4 mb-4">
+        <h2 class="h5">Add New Task</h2>
+
+        <form id="task-form">
+          <div class="mb-3">
             <label for="task-name" class="form-label">Task Name</label>
-            <input id="task-name" type="text" class="form-control" placeholder="Enter task name">
+            <input id="task-name" type="text" class="form-control" placeholder="Enter task name" required>
           </div>
 
-          <div class="mb-2">
+          <div class="mb-3">
             <label for="task-date" class="form-label">Deadline</label>
             <input id="task-date" type="date" class="form-control">
           </div>
 
-          <div class="mb-2">
-            <label for="task-course" class="form-label">Course (optional)</label>
+          <div class="mb-3">
+            <label for="task-course" class="form-label">Course</label>
             <input id="task-course" type="text" class="form-control" placeholder="e.g. CS272">
           </div>
 
-          <button id="add-btn" class="btn btn-primary mt-2">Add Task</button>
-        </div>
-
-        <!-- Task List -->
-        <div class="card p-3">
-
-          <h5>Your Tasks</h5>
-
-          <!-- ⭐ Filter（加分） -->
-          <div class="mb-2">
-            <label for="filter-course" class="form-label">Filter by Course</label>
-            <input id="filter-course" type="text" class="form-control" placeholder="Type course name">
+          <div class="mb-3">
+            <label for="task-priority" class="form-label">Priority</label>
+            <select id="task-priority" class="form-select">
+              <option>Normal</option>
+              <option>High</option>
+              <option>Low</option>
+            </select>
           </div>
 
-          <ul id="task-list" class="list-group mt-2"></ul>
+          <button id="add-btn" type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+      </article>
 
+      <!-- Task List -->
+      <article class="card p-4">
+        <h2 class="h5">Your Tasks</h2>
+
+        <div class="mb-3">
+          <label for="filter-course" class="form-label">Filter by Course</label>
+          <input id="filter-course" type="text" class="form-control" placeholder="Type course name">
         </div>
 
+        <p id="empty-msg" class="text-muted">No tasks yet.</p>
+        <ul id="task-list" class="list-group mt-2"></ul>
       </article>
+
     </section>
 
-  </div>
+  </main>
 
-  <template id="task-template"></template>
+  <footer>
+    <p>Student Course Planner | Built for CS272</p>
+  </footer>
 
   <!-- JS -->
   <script src="script.js"></script>
