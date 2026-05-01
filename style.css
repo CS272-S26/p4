@@ -1,3 +1,4 @@
+/* Base */
 body {
   background: linear-gradient(180deg, #f4f7fb 0%, #ffffff 100%);
   font-family: Arial, sans-serif;
@@ -16,8 +17,7 @@ p {
 
 /* Navbar */
 .navbar {
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding: 14px 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
@@ -31,19 +31,18 @@ p {
   border-bottom: 2px solid white;
 }
 
-/* Main spacing */
-.container {
+/* Only apply spacing inside main (fixes layout bug) */
+main .container {
   margin-top: 24px;
 }
 
-/* Hero section for homepage */
+/* Hero Section */
 .hero-section {
   background: linear-gradient(rgba(28, 43, 75, 0.78), rgba(28, 43, 75, 0.78)),
     url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f");
   background-size: cover;
   background-position: center;
   padding: 90px 20px;
-  margin-top: 0;
 }
 
 .hero-section h1,
@@ -88,8 +87,7 @@ p {
 /* Buttons */
 .btn {
   border-radius: 999px;
-  padding-left: 22px;
-  padding-right: 22px;
+  padding: 10px 22px;
 }
 
 /* Quote box */
@@ -105,9 +103,15 @@ p {
 /* Images */
 img {
   max-width: 100%;
+  display: block;
 }
 
+/* FIX: prevent giant image */
 figure img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 12px;
   transition: transform 0.2s ease;
 }
 
@@ -119,7 +123,7 @@ figcaption {
   font-size: 0.9rem;
 }
 
-/* Details section */
+/* Details */
 details {
   background-color: #eef4ff;
   padding: 15px;
@@ -132,7 +136,7 @@ summary {
   color: #0d6efd;
 }
 
-/* Form styling */
+/* Forms */
 form {
   background-color: white;
   padding: 22px;
@@ -146,7 +150,7 @@ select {
   border-radius: 10px !important;
 }
 
-/* Task list */
+/* Tasks */
 .task-item {
   background-color: white;
   border-left: 5px solid #0d6efd;
@@ -156,7 +160,7 @@ select {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
 }
 
-/* Calendar/deadline item */
+/* Deadlines */
 .deadline-item {
   background-color: white;
   padding: 16px;
@@ -165,7 +169,13 @@ select {
   margin-bottom: 12px;
 }
 
-/* Accessibility focus */
+/* Priority */
+.high-priority {
+  border-left: 5px solid #dc3545;
+  background-color: #fff5f5;
+}
+
+/* Accessibility */
 a:focus,
 button:focus,
 input:focus,
@@ -185,11 +195,11 @@ footer {
 }
 
 footer p {
-  color: white;
   margin: 0;
+  color: white;
 }
 
-/* Responsive layout */
+/* Responsive */
 @media (max-width: 768px) {
   .hero-section {
     padding: 60px 15px;
@@ -212,9 +222,4 @@ footer p {
   .card:hover {
     transform: none;
   }
-}
-
-.high-priority {
-  border-left: 5px solid #dc3545;
-  background-color: #fff5f5;
 }
